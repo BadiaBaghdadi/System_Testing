@@ -109,7 +109,7 @@ test('A user cannot register with trailing space', async t => {
     await t
         .setNativeDialogHandler(() => true)
         .click(navsignupButton)
-        .typeText(usernameInput, 'RegisterUser@Test2.com  ')
+        .typeText(usernameInput, 'trailingspace@Test2.com  ')
         .typeText(passwordInput, 'testing')
         .click(registerModalButton);
 
