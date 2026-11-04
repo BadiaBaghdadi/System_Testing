@@ -74,7 +74,7 @@ test('A user cannot register again with the same username but different password
 */
 ///////////////////////TEST 4//////////////////////
 
-test('A user should not be able to register with simple usernames such as "aaaaa"', async t => {
+test('A user should not be able to register with simple usernames such as "abc"', async t => {
     
     const navsignupButton = Selector('#signin2');
     const usernameInput = Selector('#sign-username');
@@ -85,8 +85,8 @@ test('A user should not be able to register with simple usernames such as "aaaaa
     await t
         .setNativeDialogHandler(() => true)
         .click(navsignupButton)
-        .typeText(usernameInput, 'aaaaa')
-        .typeText(passwordInput, 'testing')
+        .typeText(usernameInput, 'abc')
+        .typeText(passwordInput, 'simple')
         .click(registerModalButton);
 
 
