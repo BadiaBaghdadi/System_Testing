@@ -72,8 +72,32 @@ test('A user cannot register again with the same username but different password
 }); 
 
 */
-///////////////////////TEST 2//////////////////////
+///////////////////////TEST 4//////////////////////
 
+test('A user should not be able to register with simple usernames such as "a"', async t => {
+    
+    const navsignupButton = Selector('#signin2');
+    const usernameInput = Selector('#sign-username');
+    const passwordInput = Selector('#sign-password');
+    const registerModalButton = Selector('button[onclick="register()"]');
+
+    
+    await t
+        .setNativeDialogHandler(() => true)
+        .click(navsignupButton)
+        .typeText(usernameInput, 'a')
+        .typeText(passwordInput, 'testing')
+        .click(registerModalButton);
+
+
+    // Verify the alert message popped up with the expected text
+    const history = await t.getNativeDialogHistory();
+    await t.expect(history[0].text).eql('Username should be longer than 5 characters and unique');
+}); 
+
+
+///////////////////////TEST 6//////////////////////
+/*
 test('A user cannot register with a simple and common password such as 12345', async t => {
     
     const navsignupButton = Selector('#signin2');
@@ -95,8 +119,7 @@ test('A user cannot register with a simple and common password such as 12345', a
     await t.expect(history[0].text).eql('Password should contain at least 8 characters, including numbers, upper and lower case and symbols');
 }); 
 
-/*
-///////////////////////TEST 3//////////////////////
+///////////////////////TEST 5//////////////////////
 
 test('A user cannot register with trailing space', async t => {
     
