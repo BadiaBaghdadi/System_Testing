@@ -85,7 +85,7 @@ test('A user cannot register with a simple and common password such as 12345', a
     await t
         .setNativeDialogHandler(() => true)
         .click(navsignupButton)
-        .typeText(usernameInput, 'RegisterUser111@Test2.com')
+        .typeText(usernameInput, 'RegisterUser12@Test2.com')
         .typeText(passwordInput, '12345')
         .click(registerModalButton);
 
