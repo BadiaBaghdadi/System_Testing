@@ -85,7 +85,7 @@ test('A user should not be able to register with simple usernames such as "abc"'
     await t
         .setNativeDialogHandler(() => true)
         .click(navsignupButton)
-        .typeText(usernameInput, 'abc')
+        .typeText(usernameInput, 'eee')
         .typeText(passwordInput, 'simple')
         .click(registerModalButton);
 
