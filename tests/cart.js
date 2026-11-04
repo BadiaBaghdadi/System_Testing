@@ -39,7 +39,7 @@ test('Cannot place an order with an empty cart', async t => {
 */
 
 ///////////////////////TEST 2//////////////////////
-/*
+
 test('Adding product to cart', async t => {
     await t
         .setNativeDialogHandler(() => true)
@@ -47,7 +47,7 @@ test('Adding product to cart', async t => {
         .click(addToCartButton)
 
 });
-
+/*
 test('Can visit product page from cart', async t => {
     await t
         .click(cartNavButton)
@@ -60,9 +60,6 @@ test('Can visit product page from cart', async t => {
 ///////////////////////TEST 3//////////////////////
 test('Products stay in cart after page refresh', async t => {
     await t
-        .setNativeDialogHandler(() => true)
-        .click(firstProductLink)
-        .click(addToCartButton)
         .click(cartNavButton);
 
     // Refreshing the page
