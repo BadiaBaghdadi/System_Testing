@@ -18,7 +18,7 @@ test('A returning user can log in to the website using the registered email addr
         .click(loginModalButton);
 });
 
-test('User receives an alert when logging in with wrong password', async t => {
+test('User receives an alert when logging in with invalid credentials', async t => {
     const navLoginButton = Selector('#login2');
     const usernameInput = Selector('#loginusername');
     const passwordInput = Selector('#loginpassword');
@@ -37,7 +37,7 @@ test('User receives an alert when logging in with wrong password', async t => {
     await t.expect(history[0].text).eql('User does not exist.');
 });
 
-test('User receives an alert when logging in with invalid credentials', async t => {
+test('User receives an alert when logging in with wrong password', async t => {
     const navLoginButton = Selector('#login2');
     const usernameInput = Selector('#loginusername');
     const passwordInput = Selector('#loginpassword');
@@ -48,10 +48,10 @@ test('User receives an alert when logging in with invalid credentials', async t 
     await t
         .setNativeDialogHandler(() => true)
         .click(navLoginButton)
-        .typeText(usernameInput, 'SystemTestr@Test.com')
+        .typeText(usernameInput, 'SystemTest@Test.com')
         .typeText(passwordInput, 'WrongPassword')
         .click(loginModalButton);
     // Verify the alert message popped up with the expected text
     const history = await t.getNativeDialogHistory();
-    await t.expect(history[0].text).eql('User does not exist.');
+    await t.expect(history[0].text).eql('Wrong password.');
 });
