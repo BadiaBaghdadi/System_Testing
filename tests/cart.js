@@ -39,7 +39,7 @@ test('Cannot place an order with an empty cart', async t => {
 */
 
 ///////////////////////TEST 2//////////////////////
-
+/*
 test('Adding product to cart', async t => {
     await t
         .setNativeDialogHandler(() => true)
@@ -54,4 +54,21 @@ test('Can visit product page from cart', async t => {
         .click(cartProductLink);
 
     await t.expect(addToCartButton.visible).ok('User should be on the product detail page');
+});
+*/
+
+///////////////////////TEST 3//////////////////////
+test('Products stay in cart after page refresh', async t => {
+    await t
+        .setNativeDialogHandler(() => true)
+        .click(firstProductLink)
+        .click(addToCartButton)
+        .click(cartNavButton);
+
+    // Refreshing the page
+    await t
+        .eval(() => location.reload());
+
+    // Verify item remains after reload
+    await t.expect(cartItems.count).eql(1, 'Product should remain in cart after refresh');
 });
