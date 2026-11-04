@@ -40,11 +40,16 @@ test('Cannot place an order with an empty cart', async t => {
 
 ///////////////////////TEST 2//////////////////////
 
-test('Can visit product page from cart', async t => {
+test('Adding product to cart', async t => {
     await t
         .setNativeDialogHandler(() => true)
         .click(firstProductLink)
         .click(addToCartButton)
+
+});
+
+test('Can visit product page from cart', async t => {
+    await t
         .click(cartNavButton)
         .click(cartProductLink);
 
