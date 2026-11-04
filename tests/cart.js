@@ -49,7 +49,7 @@ test('Can visit product page from cart', async t => {
 
     await t.expect(addToCartButton.visible).ok('User should be on the product detail page');
 });
-*/
+
 
 ///////////////////////TEST 3//////////////////////
 test('Products stay in cart after page refresh', async t => {
@@ -66,13 +66,16 @@ test('Products stay in cart after page refresh', async t => {
     // Verify item remains after reload
     await t.expect(cartItems.count).eql(1, 'Product should remain in cart after refresh');
 });
-/*
+*/
 ///////////////////////TEST 4//////////////////////
 
 test('Can delete a product from the cart', async t => {
     const deleteButton = Selector('#tbodyid tr td a').withText('Delete');
 
     await t
+        .setNativeDialogHandler(() => true)
+        .click(firstProductLink)
+        .click(addToCartButton)
         .click(cartNavButton)
         .expect(cartItems.count).eql(1)
         .click(deleteButton);
@@ -80,4 +83,3 @@ test('Can delete a product from the cart', async t => {
     // Verify product was removed
     await t.expect(cartItems.count).eql(0, 'Cart should be empty after deleting the item');
 });
-*/
