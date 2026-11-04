@@ -27,11 +27,11 @@ test('User receives an alert when logging in with invalid credentials', async t 
     // Demoblaze shows a browser alert box on invalid login.
     // TestCafe automatically dismisses dialog boxes, but we can set up an expectation for it:
     await t
+        .setNativeDialogHandler(() => true)
         .click(navLoginButton)
         .typeText(usernameInput, 'WrongUser@Test.com')
         .typeText(passwordInput, 'WrongPassword')
         .click(loginModalButton);
-        .setNativeDialogHandler(() => true) // Accepts the alert dialog
     // Verify the alert message popped up with the expected text
     const history = await t.getNativeDialogHistory();
     await t.expect(history[0].text).eql('User does not exist.');
