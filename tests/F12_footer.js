@@ -1,5 +1,6 @@
 import { Selector } from 'testcafe';
 
+//open demoblaze homepage before each test
 fixture('Footer')
     .page('https://www.demoblaze.com/index.html');
 
