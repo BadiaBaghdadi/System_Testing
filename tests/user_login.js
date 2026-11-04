@@ -81,5 +81,5 @@ test('User receives an alert when logging in with wrong username', async t => {
         .click(loginModalButton);
     // Verify the alert message popped up with the expected text
     const history = await t.getNativeDialogHistory();
-    await t.expect(history[0].text).eql('User does not exit.');
+    await t.expect(history[0].text).eql('User does not exist.');
 });
