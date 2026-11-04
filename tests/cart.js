@@ -86,7 +86,7 @@ test('Can delete a product from the cart', async t => {
 */
 ///////////////////////TEST 5//////////////////////
 
-test('2. Can add multiple of the same product to the cart', async t => {
+test('Can add multiple of the same product to the cart', async t => {
     await t
         .setNativeDialogHandler(() => true) // Handle "Product added" browser alerts
         .click(firstProductLink)
