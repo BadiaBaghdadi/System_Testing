@@ -3,6 +3,8 @@ import { Selector } from 'testcafe';
 fixture('User Login')
     .page('https://www.demoblaze.com/index.html'); 
 
+///////////////////////TEST 1//////////////////////
+
 test('A returning user can log in to the website using the registered email address and password via the login page', async t => {
     // 1. Locate elements (including the navbar login button to open the modal)
     const navLoginButton = Selector('#login2');
@@ -17,6 +19,8 @@ test('A returning user can log in to the website using the registered email addr
         .typeText(passwordInput, 'Test')
         .click(loginModalButton);
 });
+
+///////////////////////TEST 2//////////////////////
 
 test('User receives an alert when logging in with invalid credentials', async t => {
     const navLoginButton = Selector('#login2');
@@ -37,6 +41,8 @@ test('User receives an alert when logging in with invalid credentials', async t 
     await t.expect(history[0].text).eql('User does not exist.');
 });
 
+///////////////////////TEST 3//////////////////////
+
 test('User receives an alert when logging in with wrong password', async t => {
     const navLoginButton = Selector('#login2');
     const usernameInput = Selector('#loginusername');
@@ -56,7 +62,10 @@ test('User receives an alert when logging in with wrong password', async t => {
     await t.expect(history[0].text).eql('Wrong password.');
 });
 
-test('User receives an alert when logging in with wrong User', async t => {
+
+///////////////////////TEST 4//////////////////////
+
+test('User receives an alert when logging in with wrong username', async t => {
     const navLoginButton = Selector('#login2');
     const usernameInput = Selector('#loginusername');
     const passwordInput = Selector('#loginpassword');
@@ -72,5 +81,5 @@ test('User receives an alert when logging in with wrong User', async t => {
         .click(loginModalButton);
     // Verify the alert message popped up with the expected text
     const history = await t.getNativeDialogHistory();
-    await t.expect(history[0].text).eql('Wrong password.');
+    await t.expect(history[0].text).eql('User does not exit.');
 });
