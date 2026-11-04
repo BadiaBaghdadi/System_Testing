@@ -24,7 +24,6 @@ test('User can registers an account using a new email address and password', asy
     const history = await t.getNativeDialogHistory();
     await t.expect(history[0].text).eql('This user already exist.');
 });
-*/
 
 ///////////////////////TEST 2//////////////////////
 
@@ -48,7 +47,7 @@ test('A user can not register again with the same credentials', async t => {
     const history = await t.getNativeDialogHistory();
     await t.expect(history[0].text).eql('This user already exist.');
 });
-/*
+*/
 
 ///////////////////////TEST 3//////////////////////
 
@@ -72,5 +71,3 @@ test('A user cannot register again with the same username but different password
     const history = await t.getNativeDialogHistory();
     await t.expect(history[0].text).eql('This user already exist.');
 }); 
-
-*/
