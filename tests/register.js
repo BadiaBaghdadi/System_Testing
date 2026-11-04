@@ -17,7 +17,7 @@ test('A user can register an account using a new email address', async t => {
         .setNativeDialogHandler(() => true)
         .click(navsignupButton)
         .typeText(usernameInput, 'RegisterUser@Test2.com')
-        .typeText(passwordInput, 'Test')
+        .typeText(passwordInput, 'TestRegister')
         .click(registerModalButton);
 
 
