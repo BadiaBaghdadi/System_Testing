@@ -92,7 +92,7 @@ test('A user cannot register with a simple and common password such as 12345', a
 
     // Verify the alert message popped up with the expected text
     const history = await t.getNativeDialogHistory();
-    await t.expect(history[0].text).eql('Please fill out Username and Password.');
+    await t.expect(history[0].text).eql('Password should contain at least 8 characters, including numbers, upper and lower case and symbols');
 }); 
 
 /*
