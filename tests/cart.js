@@ -20,8 +20,8 @@ test('Login', async t => {
 
     await t
         .click(navLoginButton)
-        .typeText(usernameInput, 'SystemTest@Test.com')
-        .typeText(passwordInput, 'Test')
+        .typeText(usernameInput, 'RegisterUser@Test2.com')
+        .typeText(passwordInput, 'TestRegister')
         .click(loginModalButton);
 })
 
@@ -69,3 +69,22 @@ test('Products stay in cart after page refresh', async t => {
     // Verify item remains after reload
     await t.expect(cartItems.count).eql(1, 'Product should remain in cart after refresh');
 });
+
+/*
+///////////////////////TEST 4//////////////////////
+
+test('5. Can delete a product from the cart', async t => {
+    const deleteButton = Selector('#tbodyid tr td a').withText('Delete');
+
+    await t
+        .setNativeDialogHandler(() => true)
+        .click(firstProductLink)
+        .click(addToCartButton)
+        .click(cartNavButton)
+        .expect(cartItems.count).eql(1)
+        .click(deleteButton);
+
+    // Verify product was removed
+    await t.expect(cartItems.count).eql(0, 'Cart should be empty after deleting the item');
+});
+*/
