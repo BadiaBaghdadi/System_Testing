@@ -66,7 +66,7 @@ test('Products stay in cart after page refresh', async t => {
     // Verify item remains after reload
     await t.expect(cartItems.count).eql(1, 'Product should remain in cart after refresh');
 });
-*/
+
 ///////////////////////TEST 4//////////////////////
 
 test('Can delete a product from the cart', async t => {
@@ -82,4 +82,18 @@ test('Can delete a product from the cart', async t => {
 
     // Verify product was removed
     await t.expect(cartItems.count).eql(0, 'Cart should be empty after deleting the item');
+});
+*/
+///////////////////////TEST 5//////////////////////
+
+test('2. Can add multiple of the same product to the cart', async t => {
+    await t
+        .setNativeDialogHandler(() => true) // Handle "Product added" browser alerts
+        .click(firstProductLink)
+        .click(addToCartButton)
+        .click(addToCartButton) // Add second time
+        .click(cartNavButton);
+
+    // Verify there are 2 items in the cart table
+    await t.expect(cartItems.count).eql(2, 'Cart should contain 2 items');
 });
