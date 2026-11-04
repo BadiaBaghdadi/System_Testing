@@ -36,7 +36,7 @@ test('User receives an alert when logging in with invalid credentials', async t 
     await t
         // Automatically accept/handle browser alert dialog boxes that pop up during the test
         .setNativeDialogHandler(() => true)
-        / Click the navigation bar login button to open the modal
+        // Click the navigation bar login button to open the modal
         .click(navLoginButton)
         // Type an unregistered/wrong username into the username field
         .typeText(usernameInput, 'WrongUser@Test.com')
