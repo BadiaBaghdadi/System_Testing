@@ -87,7 +87,7 @@ test('A user cannot register without completing the sign up form', async t => {
         .setNativeDialogHandler(() => true)
         .click(navsignupButton)
         .typeText(usernameInput, 'RegisterUser@Test2.com')
-        .typeText(passwordInput, '')
+       // .typeText(passwordInput, '')
         .click(registerModalButton);
 
 
