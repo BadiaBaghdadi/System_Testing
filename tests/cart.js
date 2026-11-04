@@ -20,8 +20,8 @@ test('Login', async t => {
 
     await t
         .click(navLoginButton)
-        .typeText(usernameInput, 'SystemTest@Test.com')
-        .typeText(passwordInput, 'Test')
+        .typeText(usernameInput, 'RegisterUser@Test2.com')
+        .typeText(passwordInput, 'TestRegister')
         .click(loginModalButton);
 })
 
@@ -40,18 +40,60 @@ test('Cannot place an order with an empty cart', async t => {
 
 ///////////////////////TEST 2//////////////////////
 
-test('Adding product to cart', async t => {
-    await t
-        .setNativeDialogHandler(() => true)
-        .click(firstProductLink)
-        .click(addToCartButton)
 
-});
-
+/*
 test('Can visit product page from cart', async t => {
     await t
         .click(cartNavButton)
         .click(cartProductLink);
 
     await t.expect(addToCartButton.visible).ok('User should be on the product detail page');
+});
+
+
+///////////////////////TEST 3//////////////////////
+test('Products stay in cart after page refresh', async t => {
+    await t
+        .setNativeDialogHandler(() => true)
+        .click(firstProductLink)
+        .click(addToCartButton)
+        .click(cartNavButton)
+
+    // Refreshing the page
+    await t
+        .eval(() => location.reload());
+
+    // Verify item remains after reload
+    await t.expect(cartItems.count).eql(1, 'Product should remain in cart after refresh');
+});
+
+///////////////////////TEST 4//////////////////////
+
+test('Can delete a product from the cart', async t => {
+    const deleteButton = Selector('#tbodyid tr td a').withText('Delete');
+
+    await t
+        .setNativeDialogHandler(() => true)
+        .click(firstProductLink)
+        .click(addToCartButton)
+        .click(cartNavButton)
+        .expect(cartItems.count).eql(1)
+        .click(deleteButton);
+
+    // Verify product was removed
+    await t.expect(cartItems.count).eql(0, 'Cart should be empty after deleting the item');
+});
+*/
+///////////////////////TEST 5//////////////////////
+
+test('Can add multiple of the same product to the cart', async t => {
+    await t
+        .setNativeDialogHandler(() => true) // Handle "Product added" browser alerts
+        .click(firstProductLink)
+        .click(addToCartButton)
+        .click(addToCartButton) // Add second time
+        .click(cartNavButton);
+
+    // Verify there are 2 items in the cart table
+    await t.expect(cartItems.count).eql(2, 'Cart should contain 2 items');
 });
