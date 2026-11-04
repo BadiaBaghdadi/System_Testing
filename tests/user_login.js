@@ -55,3 +55,22 @@ test('User receives an alert when logging in with wrong password', async t => {
     const history = await t.getNativeDialogHistory();
     await t.expect(history[0].text).eql('Wrong password.');
 });
+
+test('User receives an alert when logging in with wrong User', async t => {
+    const navLoginButton = Selector('#login2');
+    const usernameInput = Selector('#loginusername');
+    const passwordInput = Selector('#loginpassword');
+    const loginModalButton = Selector('button[onclick="logIn()"]');
+
+    // Demoblaze shows a browser alert box on invalid login.
+    // TestCafe automatically dismisses dialog boxes, but we can set up an expectation for it:
+    await t
+        .setNativeDialogHandler(() => true)
+        .click(navLoginButton)
+        .typeText(usernameInput, 'WrongUser@Test.com')
+        .typeText(passwordInput, 'Test')
+        .click(loginModalButton);
+    // Verify the alert message popped up with the expected text
+    const history = await t.getNativeDialogHistory();
+    await t.expect(history[0].text).eql('Wrong password.');
+});
