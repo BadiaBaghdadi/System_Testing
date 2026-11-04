@@ -71,4 +71,6 @@ test('A user cannot register again with the same username but different password
     // Verify the alert message popped up with the expected text
     const history = await t.getNativeDialogHistory();
     await t.expect(history[0].text).eql('This user already exist.');
-});
+}); 
+
+*/
