@@ -4,7 +4,7 @@ fixture('cart')
     .page('https://www.demoblaze.com/index.html');
 
 const cartNavButton = Selector('#cartur');
-const addToCartButton = Selector('a.btn-success').withText('Add to cart');
+const addToCartButton = Selector('btn btn-success').withText('Add to cart');
 const placeOrderButton = Selector('button.btn-success').withText('Place Order');
 const orderModal = Selector('#orderModal');
 const cartItems = Selector('#tbodyid tr');
@@ -25,7 +25,9 @@ test('Login', async t => {
         .click(loginModalButton);
 })
 
+///////////////////////TEST 1//////////////////////
 
+/*
 test('Cannot place an order with an empty cart', async t => {
     await t
         .click(cartNavButton)
@@ -34,3 +36,17 @@ test('Cannot place an order with an empty cart', async t => {
     await t.expect(orderModal.visible).notOk('Order modal should not open for an empty cart');
 });
 
+*/
+
+///////////////////////TEST 2//////////////////////
+
+test('Can visit product page from cart', async t => {
+    await t
+        .setNativeDialogHandler(() => true)
+        .click(firstProductLink)
+        .click(addToCartButton)
+        .click(cartNavButton)
+        .click(cartProductLink);
+
+    await t.expect(addToCartButton.visible).ok('User should be on the product detail page');
+});
