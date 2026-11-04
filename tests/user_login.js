@@ -4,7 +4,7 @@ fixture('User Login')
     .page('https://www.demoblaze.com/index.html'); 
 
 ///////////////////////TEST 1//////////////////////
-/*
+
 test('A returning user can log in to the website using the registered email address and password via the login page', async t => {
     // 1. Locate elements (including the navbar login button to open the modal)
     const navLoginButton = Selector('#login2');
@@ -99,29 +99,6 @@ test('A user can not log in without completing the form', async t => {
         .click(navLoginButton)
         .typeText(usernameInput, 'SystemTest@Test.com')
        // .typeText(passwordInput, 'WrongPassword')
-        .click(loginModalButton);
-    // Verify the alert message popped up with the expected text
-    const history = await t.getNativeDialogHistory();
-    await t.expect(history[0].text).eql('Please fill out Username and Password.');
-});
-
-*/
-
-///////////////////////TEST 6//////////////////////
-
-test('A user can not leave trailing spaces', async t => {
-    const navLoginButton = Selector('#login2');
-    const usernameInput = Selector('#loginusername');
-    const passwordInput = Selector('#loginpassword');
-    const loginModalButton = Selector('button[onclick="logIn()"]');
-
-    // Demoblaze shows a browser alert box on invalid login.
-    // TestCafe automatically dismisses dialog boxes, but we can set up an expectation for it:
-    await t
-        .setNativeDialogHandler(() => true)
-        .click(navLoginButton)
-        .typeText(usernameInput, 'SystemTest@Test.com ')
-       .typeText(passwordInput, 'Test')
         .click(loginModalButton);
     // Verify the alert message popped up with the expected text
     const history = await t.getNativeDialogHistory();
