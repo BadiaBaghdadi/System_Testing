@@ -116,5 +116,5 @@ test('A user cannot register with trailing space', async t => {
 
     // Verify the alert message popped up with the expected text
     const history = await t.getNativeDialogHistory();
-    await t.expect(history[0].text).eql('Please fill out Username and Password.');
+    await t.expect(history[0].text).eql('Remove any trailing space.');
 }); 
