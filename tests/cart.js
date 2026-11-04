@@ -4,7 +4,7 @@ fixture('cart')
     .page('https://www.demoblaze.com/index.html');
 
 const cartNavButton = Selector('#cartur');
-const addToCartButton = Selector('btn btn-success').withText('Add to cart');
+const addToCartButton = Selector('a.btn-success').withText('Add to cart');
 const placeOrderButton = Selector('button.btn-success').withText('Place Order');
 const orderModal = Selector('#orderModal');
 const cartItems = Selector('#tbodyid tr');
