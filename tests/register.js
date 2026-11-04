@@ -52,7 +52,7 @@ test('A user registers again with the same credentials', async t => {
 
 ///////////////////////TEST 3//////////////////////
 
-test('A user registers again with the same username and different password', async t => {
+test('A user cannot register again with the same username but different password', async t => {
     
     const navsignupButton = Selector('#signin2');
     const usernameInput = Selector('#sign-username');
