@@ -12,7 +12,7 @@ test('Add product to cart', async t => {
     await t
         .setNativeDialogHandler(() => true)
 
-        // open Samsung Galaxy S6 product page
+        // open samsung galaxy S6 product page
         .click(Selector('a').withText('Samsung galaxy s6'))
 
         // add to cart
