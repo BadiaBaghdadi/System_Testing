@@ -71,10 +71,10 @@ test('A user cannot register again with the same username but different password
     await t.expect(history[0].text).eql('This user already exist.');
 }); 
 
+*/
+///////////////////////TEST 2//////////////////////
 
-///////////////////////TEST 4//////////////////////
-
-test('A user cannot register without completing the sign up form', async t => {
+test('A user cannot register with a simple and common password such as 12345', async t => {
     
     const navsignupButton = Selector('#signin2');
     const usernameInput = Selector('#sign-username');
@@ -85,8 +85,8 @@ test('A user cannot register without completing the sign up form', async t => {
     await t
         .setNativeDialogHandler(() => true)
         .click(navsignupButton)
-        .typeText(usernameInput, 'RegisterUser@Test2.com')
-       // .typeText(passwordInput, '')
+        .typeText(usernameInput, 'RegisterUser111@Test2.com')
+        .typeText(passwordInput, '12345')
         .click(registerModalButton);
 
 
@@ -95,8 +95,8 @@ test('A user cannot register without completing the sign up form', async t => {
     await t.expect(history[0].text).eql('Please fill out Username and Password.');
 }); 
 
-*/
-///////////////////////TEST 5//////////////////////
+/*
+///////////////////////TEST 3//////////////////////
 
 test('A user cannot register with trailing space', async t => {
     
@@ -118,3 +118,5 @@ test('A user cannot register with trailing space', async t => {
     const history = await t.getNativeDialogHistory();
     await t.expect(history[0].text).eql('Remove any trailing space.');
 }); 
+
+*/
