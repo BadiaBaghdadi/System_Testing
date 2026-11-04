@@ -27,8 +27,8 @@ test('User can registers an account using a new email address and password', asy
 */
 
 ///////////////////////TEST 2//////////////////////
-/*
-test('A user registers again with the same credentials', async t => {
+
+test('A user can not register again with the same credentials', async t => {
     
     const navsignupButton = Selector('#signin2');
     const usernameInput = Selector('#sign-username');
@@ -48,7 +48,7 @@ test('A user registers again with the same credentials', async t => {
     const history = await t.getNativeDialogHistory();
     await t.expect(history[0].text).eql('This user already exist.');
 });
-*/
+/*
 
 ///////////////////////TEST 3//////////////////////
 
